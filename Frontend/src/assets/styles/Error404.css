@@ -1,0 +1,187 @@
+/* Error404.css */
+.error404-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #EEEEEE 0%, #e7e2e2 100%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.error404-header {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.error404-header img {
+  width: 82.6px;
+  height: auto;
+}
+
+.error404-content {
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.error404-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.error404-subtitle {
+  font-size: 1.1rem;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.error404-image {
+  max-width: 100%;
+  height: auto;
+  margin: 2.5rem 0;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.error404-button {
+  background: linear-gradient(45deg, #fa036b, #f00f6d);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.error404-button:hover {
+  background: linear-gradient(45deg, #fa036b, #f00f6d);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+}
+
+/* Media Queries pour le responsive */
+@media (max-width: 768px) {
+  .error404-container {
+    padding: 15px;
+  }
+  
+  .error404-header {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .error404-header img {
+    width: 60px;
+  }
+  
+  .error404-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .error404-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .error404-image {
+    margin: 2rem 0;
+  }
+  
+  .error404-button {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error404-title {
+    font-size: 1.75rem;
+  }
+  
+  .error404-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .error404-content {
+    padding: 2rem 1rem;
+  }
+  
+  .error404-button {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .error404-title {
+    font-size: 1.5rem;
+  }
+  
+  .error404-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .error404-header img {
+    width: 50px;
+  }
+}
+
+/* Animation pour un effet de flottement */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.error404-image {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Effet de transition pour le contenu */
+.error404-content > * {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.error404-title {
+  animation-delay: 0.2s;
+}
+
+.error404-subtitle {
+  animation-delay: 0.4s;
+}
+
+.error404-image {
+  animation-delay: 0.6s;
+}
+
+.error404-button {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

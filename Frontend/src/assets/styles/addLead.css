@@ -1,0 +1,47 @@
+.div-input{
+    display: flex;
+    flex-wrap: wrap; /* les colonnes passent à la ligne si nécessaire */
+    /* margin-left: -0.5rem;  pour compenser le padding des colonnes */
+    /*margin-right: -0.5rem; */
+}
+
+.col1{
+    float: 1 ;
+    width: 48%;
+    margin-right: 25px;
+}
+
+.col2{
+    float: 2;
+    width: 48%;
+}
+
+.col-sel1{
+    float: 1;
+    width: 31%;
+    margin-right: 25px;
+}
+.col-sel2{
+    float: 2;
+    width: 31%;
+    margin-right: 25px;
+}
+.col-sel3{
+    float: 3;
+    width: 31%;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px){
+    .div-input{
+        display: block;
+    }
+    .col1, .col-sel1, .col-sel2{
+        margin-bottom: 10px;
+        width: 90%;
+    }
+    .col2, .col-sel3{
+        width: 90%;
+    }
+    
+}

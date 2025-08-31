@@ -1,0 +1,146 @@
+.navbarLead{
+    /* position: relative; */
+    height: 70px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.navbar-titre{
+  /* float: left; */
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: rgb(33, 37, 41);
+  font-size: 25px;
+  line-height: 21px;
+  vertical-align:middle;
+  margin-left: 15px;
+  margin-top: 5px;
+  /* position: absolute; */
+  left: 0;
+  /* top: 7px; */
+}
+
+.navbar-btn{
+    /* position: absolute; */
+    /* right: 0;
+    vertical-align: middle; */
+    width: 500px;
+}
+
+.navbar-btn button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.user{
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppin", sans-serif;
+    font-weight: 600;
+    color: rgb(33, 37, 41);
+    font-size: 14px;
+    line-height: 17px;
+    /* margin-top: 10px; */
+    /* vertical-align: middle; */
+    border-radius: 10px;
+    /* background-color: #eee; */
+    width: 200px;
+    /* padding-top: 15px; */
+    text-align: center;
+    gap: 10;
+}
+
+.user p{
+    margin-bottom: 0;
+}
+
+.user img {
+  width: 50px;   /* taille de l'image */
+  height: 50px;  /* taille de l'image */
+  border-radius: 50%; /* rend l'image circulaire */
+  object-fit: cover; /* pour que l'image garde ses proportions */
+  margin-right: 15px;
+}
+.user span{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(108, 117, 125);
+}
+
+.vertical-line {
+  width: 1px;           /* épaisseur de la ligne */
+  height: 30px;        /* longueur de la ligne */
+  background-color: #eee; /* couleur de la ligne */
+}
+
+/* Ajoutez ce CSS dans votre fichier de styles */
+.notification-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.notification-btn.has-notifications {
+  background-color: #fa036b;
+  color: white;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  /* .image-profile{
+    display: none;
+  } */
+  .navbarLead{
+    margin-left: 40px;
+  }
+  .user{
+    width: auto;
+  }
+  .user p{
+    margin: 0;
+    display: none;
+  }
+
+}
+
+

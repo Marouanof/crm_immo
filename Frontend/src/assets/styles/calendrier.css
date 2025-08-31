@@ -1,0 +1,197 @@
+/* Conteneur principal */
+.calendrier-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Disposition responsive */
+.calendar-section {
+  flex: 1;
+}
+
+.tasks-section {
+  flex: 2;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.task-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Titre principal */
+.calendrier-container h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Sous-titre */
+.calendrier-container h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+/* Style de react-calendar */
+.react-calendar {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 12px;
+  background: #f9fafb;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.react-calendar__tile {
+  padding: 10px 6.6667px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.react-calendar__tile:hover {
+  background: #eaf4ff;
+  cursor: pointer;
+}
+
+.react-calendar__tile--active {
+  background: #2563eb !important;
+  color: white !important;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Liste des tâches */
+.task-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Chaque tâche */
+.task-item {
+  padding: 12px 15px;
+  background: #fdfdfd;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Texte de la tâche */
+.task-item p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.task-item strong {
+  color: #2563eb;
+}
+
+/* Icônes */
+.task-item p:first-child strong {
+  color: #16a34a; /* icône heure */
+}
+
+.task-item p:nth-child(2) strong {
+  color: #eab308; /* icône motif */
+}
+
+.task-item p:last-child strong {
+  color: #dc2626; /* icône utilisateur */
+}
+
+/* Message aucune tâche */
+.no-task {
+  margin-top: 12px;
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Media Queries pour le responsive */
+@media (min-width: 768px) {
+  .calendrier-container {
+    flex-direction: row;
+  }
+  
+  .calendar-section {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .calendrier-container {
+    padding: 15px;
+  }
+  
+  .tasks-section {
+    flex-direction: column;
+  }
+  
+  .task-column {
+    min-width: 100%;
+  }
+  
+  .react-calendar {
+    font-size: 0.8rem;
+  }
+  
+  .react-calendar__tile {
+    padding: 8px 4px;
+  }
+  
+  .calendrier-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  .calendrier-container h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendrier-container {
+    padding: 10px;
+    border-radius: 12px;
+  }
+  
+  .react-calendar {
+    padding: 5px;
+  }
+  
+  .task-item {
+    padding: 10px;
+  }
+  
+  .task-item p {
+    font-size: 0.85rem;
+  }
+}

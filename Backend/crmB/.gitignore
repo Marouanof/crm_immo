@@ -1,0 +1,30 @@
+
+# Environnement virtuel
+Backend/Scripts/
+Backend/include/
+Backend/Lib/
+Backend/pyvenv.cfg
+
+# Base de données
+Backend/db.sqlite3
+
+# Fichiers Python
+**/_pycache_/
+
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*/local_settings.py
+*/media/
+
+# Fichiers sensibles
+.env
+.env.*
+secrets.json
+
+# IDE
+.idea/
+.vscode/
+.DS_Store

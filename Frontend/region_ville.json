@@ -1,0 +1,50 @@
+[
+  {
+    "region": "Tanger-Tétouan-Al Hoceïma",
+    "villes": ["Tanger", "Tétouan", "Al Hoceïma", "Larache", "Chefchaouen", "Ouezzane"]
+  },
+  {
+    "region": "L'Oriental",
+    "villes": ["Oujda", "Nador", "Berkane", "Taourirt", "Jerada", "Guercif"]
+  },
+  {
+    "region": "Fès-Meknès",
+    "villes": ["Fès", "Meknès", "Taza", "Ifrane", "Sefrou", "El Hajeb", "Boulemane"]
+  },
+  {
+    "region": "Rabat-Salé-Kénitra",
+    "villes": ["Rabat", "Salé", "Kénitra", "Skhirat", "Témara", "Sidi Slimane"]
+  },
+  {
+    "region": "Béni Mellal-Khénifra",
+    "villes": ["Béni Mellal", "Khouribga", "Khénifra", "Azilal", "Fquih Ben Salah"]
+  },
+  {
+    "region": "Casablanca-Settat",
+    "villes": ["Casablanca", "Mohammedia", "Settat", "El Jadida", "Berrechid", "Benslimane"]
+  },
+  {
+    "region": "Marrakech-Safi",
+    "villes": ["Marrakech", "Safi", "Essaouira", "Chichaoua", "El Kelaâ des Sraghna", "Youssoufia"]
+  },
+  {
+    "region": "Drâa-Tafilalet",
+    "villes": ["Errachidia", "Ouarzazate", "Zagora", "Midelt", "Tinghir"]
+  },
+  {
+    "region": "Souss-Massa",
+    "villes": ["Agadir", "Tiznit", "Taroudant", "Inezgane", "Aït Melloul", "Chtouka Aït Baha"]
+  },
+  {
+    "region": "Guelmim-Oued Noun",
+    "villes": ["Guelmim", "Sidi Ifni", "Tan-Tan", "Assa-Zag"]
+  },
+  {
+    "region": "Laâyoune-Sakia El Hamra",
+    "villes": ["Laâyoune", "Tarfaya", "Boujdour", "Smara"]
+  },
+  {
+    "region": "Dakhla-Oued Ed-Dahab",
+    "villes": ["Dakhla", "Aousserd", "Bir Gandouz"]
+  }
+]

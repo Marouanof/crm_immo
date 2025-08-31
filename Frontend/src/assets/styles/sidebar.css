@@ -1,0 +1,202 @@
+/* Custom hover effect for nav links */
+.hover-bg-primary:hover {
+  background-color: #FF8E29 !important;
+  transition: background-color 0.3s ease;
+  color: white !important;
+}
+
+.app-container {
+  position: relative;
+  display: flex;
+}
+
+.sidebar{
+  height: 95vh;
+  position: fixed;
+  left: 0; /* caché par défaut */
+  width: 240px;
+  overflow-y: auto;
+  transition: left 0.3s ease; /* smooth open/close */
+  /* z-index: 1200; */
+}
+.sidebar.open {
+  left: 0; /* visible quand actif */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 1100;
+}
+
+/* Smooth transitions for sidebar */
+.bg-dark {
+  background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);
+}
+.bg-sidebar{
+    background-color: #FFFFFF;
+    color: rgb(111, 117, 126);
+}
+.hover-bg-collapse{
+    background-color: #FF8E29;
+    color: white !important;
+}
+.hover-bg-collapse:hover{
+    background-color: #FF8E35;
+    color: white !important;
+}
+
+/* Burger bouton - visible uniquement sur mobile */
+.burger-btn {
+  display: none; /* par défaut desktop */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1300;
+  font-size: 24px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.partie2 {
+    width: calc(100% - 240px);
+    margin-left: 260px; 
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bg-dark {
+    width: 80px !important;
+    transition: width 0.3s ease;
+  }
+  .bg-dark .nav-link span {
+    display: none;
+  }
+  .bg-dark .nav-link {
+    justify-content: center;
+  }
+  
+  .bg-dark .nav-link i {
+    margin-right: 0 !important;
+  }
+  .bg-dark img {
+    width: 50px !important;
+  }
+  .bg-dark .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  .partie2 {
+    margin-left: 0;
+    width: 100%;
+  }
+  .sidebar {
+    left: -260px; /* caché par défaut mobile */
+    z-index: 100;
+  }
+  .sidebar.open {
+    left: 0;
+    height: 88vh;
+  }
+  .burger-btn{
+    display: block;
+    top: 25px;
+  }
+  /* .partie2 {
+    margin-left: 260px; /* espace pour sidebar desktop 
+    width: calc(100% - 260px);
+  } */
+}
+
+
+/* Hover effect for nav links */
+.hover-bg-primary:hover {
+  background-color: #fa036b !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submenu items */
+.hover-bg-secondary:hover {
+  background-color: #495057 !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Dot for submenu items */
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff80;
+  border-radius: 50%;
+}
+
+/* Rotate chevron on collapse open */
+.collapse.show + .nav-link .transition-transform {
+  transform: rotate(180deg);
+}
+
+/* Smooth transition for chevron */
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+.bg-ul{
+    background-color: #dfdddd;
+    border-radius: 16px;
+    top: 15px;
+    
+}
+
+#home{
+  background-color: #fa036b;
+  border-radius: 6px;
+}
+.link-color{
+  color: #A8A8AD;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-link span:not(.dot) {
+    display: none;
+  }
+  .nav-link .fa-chevron-down {
+    display: none;
+  }
+  .nav-link {
+    justify-content: center;
+  }
+  .nav-link .fa-user-plus {
+    margin-right: 0 !important;
+  }
+  .collapse ul {
+    padding-left: 0 !important;
+  }
+  .collapse .nav-link {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.sidebar .logout-btn-container{
+  position: absolute;
+  bottom: 20px; /*marge depuis le bas */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-bg{
+    background-color: #fa036b;
+    color: white;
+}

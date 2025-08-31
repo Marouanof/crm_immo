@@ -1,0 +1,17 @@
+.tableau tr, .tableau th, .tableau td{
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+.tableau tr:hover{
+    z-index: -7;
+}
+.tableau th{
+    /* text-align: center; */
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.tableau td{
+    color: #333;
+}
