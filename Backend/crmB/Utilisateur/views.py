@@ -15,17 +15,26 @@ from django.contrib.auth import get_user_model
 
 class RegistrerView(APIView):
     permission_classes = [permissions.AllowAny]
+
     def post(self, request):
+        print("===== Request Data =====")
+        print(request.data)  # <-- log complet
+        print("=======================")
+
         serializer = RegistrerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            for elem in request.data['villeChoisie']:
-                utilisateur_ville = Utilisateur_ville.objects.create(
-                    id_utilisateur = serializer.instance,
-                    ville = elem
+            villes_choisies = request.data.get('villeChoisie', [])
+            print("Villes choisies:", villes_choisies)  # <-- log des villes
+            for elem in villes_choisies:
+                Utilisateur_ville.objects.create(
+                    id_utilisateur=serializer.instance,
+                    ville=elem
                 )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print("Serializer errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UpdateView(APIView):
     permission_classes = [permissions.IsAuthenticated]
