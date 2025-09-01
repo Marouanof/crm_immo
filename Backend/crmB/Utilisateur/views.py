@@ -14,7 +14,7 @@ from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 
 class RegistrerView(APIView):
-    #permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     def post(self, request):
         serializer = RegistrerSerializer(data=request.data)
         if serializer.is_valid():
