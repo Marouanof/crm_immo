@@ -13,43 +13,19 @@ import random
 from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 
-
 class RegistrerView(APIView):
-    permission_classes = [permissions.AllowAny]  # Pas besoin de token pour créer un utilisateur
-
+    permission_classes = [permissions.IsAuthenticated]
     def post(self, request):
-        print("===== Request Data =====")
-        print(request.data)
-
         serializer = RegistrerSerializer(data=request.data)
         if serializer.is_valid():
-            try:
-                serializer.save()  # Création de l'utilisateur
-                villes = request.data.get('villeChoisie', [])
-                for ville in villes:
-                    try:
-                        Utilisateur_ville.objects.create(
-                            id_utilisateur=serializer.instance,
-                            ville=ville
-                        )
-                    except Exception as e_ville:
-                        print(f"Erreur lors de la création de la ville {ville}: {e_ville}")
-
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-            except Exception as e:
-                print("===== ERREUR SUR LA CREATION UTILISATEUR =====")
-                print(e)
-                return Response(
-                    {"error": "Erreur interne serveur lors de la création de l'utilisateur."},
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            serializer.save()
+            for elem in request.data['villeChoisie']:
+                utilisateur_ville = Utilisateur_ville.objects.create(
+                    id_utilisateur = serializer.instance,
+                    ville = elem
                 )
-
-        else:
-            print("===== SERIALIZER ERRORS =====")
-            print(serializer.errors)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UpdateView(APIView):
     permission_classes = [permissions.IsAuthenticated]

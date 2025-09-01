@@ -43,13 +43,12 @@ const Register = ({ onCancel, onSuccess}) => {
     const token = localStorage.getItem("access_token");
     try {
 
-    //   const response = await axios.post(`${apiUrl}/utilisateur/register/`, dataTotal, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //     "Content-Type": "application/json"
-    //   }
-    // });
-      const response = await axios.post(`${apiUrl}/utilisateur/register/`, dataTotal);
+      const response = await axios.post(`${apiUrl}/utilisateur/register/`, dataTotal, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
       // console.log(response.data);
       onSuccess();
       alert('Utilisateur enregistré avec succès');

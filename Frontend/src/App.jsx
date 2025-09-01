@@ -58,7 +58,7 @@ function App() {
         
         <Routes>
           
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={ <PrivateRoute> <ProtectedRoute allowedRoles={['admin']}> <Register /> </ProtectedRoute></PrivateRoute>} />
           <Route path="/ajouter-bien" element={ <PrivateRoute>  <AddBien />  </PrivateRoute> } />
           {/* <Route path="/biens" element={ <PrivateRoute>  <ListeBiens/> </PrivateRoute> }/> */}
           <Route path="/modifier-bien/:id" element={ <PrivateRoute>  <EditBien /> </PrivateRoute> } />
