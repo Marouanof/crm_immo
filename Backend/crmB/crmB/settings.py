@@ -58,9 +58,6 @@ MIDDLEWARE = [
 ]
 
 
-CORS_ALLOW_ALL_ORIGINS = True  # pour tester, à restreindre en prod
-
-
 # Autorise les requêtes depuis le frontend Vite
 
 
@@ -146,10 +143,13 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Configuration CORS
-CORS_ALLOW_ALL_ORIGINS = False  # Pour le développement seulement
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = ['*']
 CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    "https://crm-immo.vercel.app",  
+    "http://localhost:5173",  
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
