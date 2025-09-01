@@ -13,27 +13,42 @@ import random
 from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 
+
 class RegistrerView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.AllowAny]  # Pas besoin de token pour créer un utilisateur
 
     def post(self, request):
         print("===== Request Data =====")
-        print(request.data)  # <-- log complet
-        print("=======================")
+        print(request.data)
 
         serializer = RegistrerSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            villes_choisies = request.data.get('villeChoisie', [])
-            print("Villes choisies:", villes_choisies)  # <-- log des villes
-            for elem in villes_choisies:
-                Utilisateur_ville.objects.create(
-                    id_utilisateur=serializer.instance,
-                    ville=elem
+            try:
+                serializer.save()  # Création de l'utilisateur
+                villes = request.data.get('villeChoisie', [])
+                for ville in villes:
+                    try:
+                        Utilisateur_ville.objects.create(
+                            id_utilisateur=serializer.instance,
+                            ville=ville
+                        )
+                    except Exception as e_ville:
+                        print(f"Erreur lors de la création de la ville {ville}: {e_ville}")
+
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+            except Exception as e:
+                print("===== ERREUR SUR LA CREATION UTILISATEUR =====")
+                print(e)
+                return Response(
+                    {"error": "Erreur interne serveur lors de la création de l'utilisateur."},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
                 )
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print("Serializer errors:", serializer.errors)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+            print("===== SERIALIZER ERRORS =====")
+            print(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UpdateView(APIView):
