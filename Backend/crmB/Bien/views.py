@@ -153,7 +153,7 @@ class BienListCreateView(generics.ListCreateAPIView):
             prop_telephone = data['prop_telephone'][-9:]
             
             # Vérifier si un lead avec ce numéro de téléphone existe déjà
-            lead_ancient = Bien.objects.filter(telephone__endswith=prop_telephone)
+            lead_ancient = Bien.objects.filter(prop_telephone__endswith=prop_telephone)
             
             if lead_ancient.exists():
                 # Si un doublon est trouvé, lever une exception
