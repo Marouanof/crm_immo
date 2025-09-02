@@ -298,7 +298,10 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                                             lead.ascenseur && "Ascenseur",
                                             lead.jardin && "Jardin",
                                             lead.terrasse && "Terrasse",
-                                            lead.garage && "Garage"
+                                            lead.garage && "Garage",
+                                            lead.balcon && "Balcon",
+                                            lead.parking && "Parking",
+                                            lead.meuble && "Meuble",
                                             ].filter(Boolean).join(", ")
                                         : "Aucune"
                                     }
