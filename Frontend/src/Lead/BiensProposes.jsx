@@ -367,7 +367,9 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                                                     </a>
                                                 </td>
                                                 <td>{bien.type_transaction}</td>
-                                                <td>{bien.ascenseur ? "Ascenseur" : ""} {bien.jardin ? "Jardin" : ""} {bien.terrasse ? "Terrasse" : ""} {bien.garage ? "Garage" : ""}</td>
+                                                <td>{bien.ascenseur ? "Ascenseur" : ""} {bien.jardin ? "Jardin" : ""} {bien.terrasse ? "Terrasse" : ""} {bien.garage ? "Garage" : ""}
+                                                    {bien.balcon ? "Balcon" : ""} {bien.parking ? "Parking" : ""} {bien.meuble ? "Meuble":""}  
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -301,7 +301,7 @@ const AllLead = ( { onRefresh }) =>{
             </td>
             <td className="ps-3">{lead.nom + ' '+ lead.prenom}</td>
             <td>{lead.quartiers[0].ville}</td>
-            <td>{'0' + lead.telephone}</td>
+            <td>{lead.telephone}</td>
             <td>
               <span
                 className={`badge-modern ${

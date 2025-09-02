@@ -118,7 +118,10 @@ class BienListCreateView(generics.ListCreateAPIView):
             queryset = queryset.filter(degre_importance__iexact=degre)
 
         if etat_bien:
-            queryset = queryset.filter(etat_bien__iexact=etat_bien)    
+            if etat_bien.lower() == 'tous':
+                pass
+            else:
+                queryset = queryset.filter(etat_bien__iexact=etat_bien)   
         
         if ascenseur:
             if ascenseur.lower() == 'true':

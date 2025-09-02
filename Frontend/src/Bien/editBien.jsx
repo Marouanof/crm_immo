@@ -228,37 +228,45 @@ export default function EditBien( { idBien, onCancel, onSuccess }){
                         <option value="2e main">2e main</option>
                     </select>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="ascenseur" checked={formData.ascenseur} onChange={handleChange} />
-                    <label className="form-check-label">Ascenseur</label>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="ascenseur" checked={formData.ascenseur} onChange={handleChange} />
+                        <label className="form-check-label">Ascenseur</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="jardin" checked={formData.jardin} onChange={handleChange} />
+                        <label className="form-check-label">Jardin</label>
+                    </div>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="jardin" checked={formData.jardin} onChange={handleChange} />
-                    <label className="form-check-label">Jardin</label>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="terrasse" checked={formData.terrasse} onChange={handleChange} />
+                        <label className="form-check-label">Terrasse</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="garage" checked={formData.garage} onChange={handleChange} />
+                        <label className="form-check-label">Garage</label>
+                    </div>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="terrasse" checked={formData.terrasse} onChange={handleChange} />
-                    <label className="form-check-label">Terrasse</label>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
+                        <label className="form-check-label">Balcon</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
+                        <label className="form-check-label">Parking</label>
+                    </div>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="garage" checked={formData.garage} onChange={handleChange} />
-                    <label className="form-check-label">Garage</label>
-                </div>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
+                        <label className="form-check-label">Meublé</label>
+                    </div>
+                </div>
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" name="is_validated" checked={formData.is_validated} onChange={handleChange} />
                     <label className="form-check-label">Validé</label>
-                </div>
-                 <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
-                    <label className="form-check-label">Balcon</label>
-                </div>
-                 <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
-                    <label className="form-check-label">Parking</label>
-                </div>
-                 <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
-                    <label className="form-check-label">Meublé</label>
                 </div>
                 <button type="submit" className="btn me-3" style={{ backgroundColor: "#fa036b", color: "white" }}>Modifier</button>
                 <button onClick={onCancel} className="btn " style={{ backgroundColor: "#eee", color: "#333" }}>Annuler</button>

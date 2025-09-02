@@ -282,22 +282,25 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                             
                         </select>
                     </div>
-
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="ascenseur" checked={formData.ascenseur} onChange={handleChange} />
-                    <label className="form-check-label">Ascenseur</label>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="ascenseur" checked={formData.ascenseur} onChange={handleChange} />
+                        <label className="form-check-label">Ascenseur</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="jardin" checked={formData.jardin} onChange={handleChange} />
+                        <label className="form-check-label">Jardin</label>
+                    </div>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="jardin" checked={formData.jardin} onChange={handleChange} />
-                    <label className="form-check-label">Jardin</label>
-                </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="terrasse" checked={formData.terrasse} onChange={handleChange} />
-                    <label className="form-check-label">Terrasse</label>
-                </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" name="garage" checked={formData.garage} onChange={handleChange} />
-                    <label className="form-check-label">Garage</label>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="terrasse" checked={formData.terrasse} onChange={handleChange} />
+                        <label className="form-check-label">Terrasse</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="garage" checked={formData.garage} onChange={handleChange} />
+                        <label className="form-check-label">Garage</label>
+                    </div>
                 </div>
                 <div className="div-input">
                     <div className="col1 mb-3 form-check">
@@ -314,11 +317,7 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                         <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
                         <label className="form-check-label">Meublé</label>
                     </div>
-                    
                 </div>
-
-               
-
                 <div className="mt-4">
                     <button type="submit" className="btn " style={{ backgroundColor: "#fa036b", color: "white" }}>Modifier</button>
                     <button type="button" className="btn ms-2" style={{ backgroundColor: "#eee", color: "#333" }} onClick={handleClose}>Annuler</button>

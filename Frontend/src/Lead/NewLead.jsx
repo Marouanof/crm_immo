@@ -246,7 +246,7 @@ const LeadNouveau = ({ OnRefresh }) => {
                             <tr key={lead.id}>
                                 <td>{lead.nom} {lead.prenom}</td>
                                 {/* <td></td> */}
-                                <td>{'0' + lead.telephone}</td>
+                                <td>{lead.telephone}</td>
                                 <td>
                                     <span 
                                     className="badge"

@@ -279,7 +279,7 @@ const NonRelance = ({ onRefresh }) => {
                                       </div>
                                     </td>
                                     <td>{lead.nom} {lead.prenom}</td>
-                                    <td>{'0' + lead.telephone}</td>
+                                    <td>{lead.telephone}</td>
                                     <td>
                                         {lead.dernier_rappel ? (<span className="badge" style={getMotifStyle(lead.dernier_rappel.motif)}>
                                             {getMotifLabel(lead.dernier_rappel.motif)}

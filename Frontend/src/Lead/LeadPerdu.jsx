@@ -213,7 +213,7 @@ return (
                 <td>{lead.nom}</td>
                 <td>{lead.prenom}</td>
                 <td>{lead.email}</td>
-                <td>{'0' + lead.telephone}</td>
+                <td>{lead.telephone}</td>
                 {/* <td>
                   <span className={`badge bg-${lead.source === 'Web' ? 'danger' : 'secondary'}`}>
                     {lead.source}
