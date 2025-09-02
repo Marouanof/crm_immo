@@ -15,9 +15,10 @@ function LeadInfo() {
   useEffect(() => {
     const fetchLead = async () => {
       try {
-        const response = await axios.get(`${apiUrl}lead/lead/${id}/`, {
+        const response = await axios.get(`${apiUrl}/lead/lead/${id}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            'Content-Type': "application/json"
           },
         });
         setLead(response.data);
