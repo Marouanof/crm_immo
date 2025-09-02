@@ -293,7 +293,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                                 <li>Etat du Bien : {lead.etat_bien}</li>
                                 <li>
                                     Critères: {
-                                        lead.ascenseur || lead.jardin || lead.terrasse || lead.garage
+                                        lead.ascenseur || lead.jardin || lead.terrasse || lead.garage || lead.balcon || lead.parking || lead.meuble
                                         ? [
                                             lead.ascenseur && "Ascenseur",
                                             lead.jardin && "Jardin",
