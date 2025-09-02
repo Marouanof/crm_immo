@@ -8,7 +8,7 @@ class Lead(models.Model):
      id_utilisateur = models.ForeignKey(Utilisateur, null=True, blank=True, on_delete=models.CASCADE)
      nom = models.CharField(max_length=100)
      prenom = models.CharField(max_length=100)
-     telephone = models.IntegerField()
+     telephone = models.CharField(max_length=20)
      email = models.EmailField()
      type_bien = models.CharField(max_length=100)
      type_transaction = models.CharField(max_length=100)

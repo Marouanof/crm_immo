@@ -61,10 +61,6 @@ const AddBien = ({onCancel, onSuccess}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!regex.test(formData.prop_telephone)){
-            alert("Le numéro de téléphone doit commencer par +212 ou par 0 et contenir 9 chiffres après.");
-            return;
-        }
         console.log("Payload envoyé:", formData);
         const reference = generateReference()
         const dataToSend = {

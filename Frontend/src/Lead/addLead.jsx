@@ -69,9 +69,6 @@ const AddLead = ({onCancel, onSuccess}) => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!regex.test(formData.telephone)){
-            alert("Le numéro de téléphone doit commencer par +212 ou par 0 et contenir 9 chiffres après.");
-        }
         try {
             const token = localStorage.getItem('access_token');
             // const data_quartier = quartiers.quartier.map((q,i) => ({

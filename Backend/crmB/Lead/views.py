@@ -100,9 +100,12 @@ class AjouterLeadAPIView(APIView):
                 statut_lead = 'Affecté'
 
 
-            lead_ancient = Lead.objects.filter(telephone=data['telephone'])
+            telephone = data['telephone'][-9:]  # les 9 derniers chiffres
+
+            lead_ancient = Lead.objects.filter(telephone__endswith=telephone)
+
             if lead_ancient.exists():
-                return JsonResponse({'error': 'Ce lead est deja dans la base de donnees'}, status=400)
+                return JsonResponse({'error': 'Ce lead est déjà dans la base de données'}, status=400)
 
             lead = Lead.objects.create(
                 id_utilisateur=commercial,

@@ -3,7 +3,7 @@ from Utilisateur.models import Utilisateur
 
 class Bien(models.Model):
     id_utilisateur = models.ForeignKey(Utilisateur, on_delete=models.CASCADE,default=1)
-    reference = models.CharField(max_length=50,unique=True)
+    reference = models.CharField(max_length=20,unique=True)
     type_bien = models.CharField(max_length=100)
     type_transaction = models.CharField(max_length=100)
     prix = models.IntegerField()
@@ -15,7 +15,7 @@ class Bien(models.Model):
     adresse = models.CharField(max_length=100)
     prop_nom = models.CharField(max_length=100)
     prop_prenom = models.CharField(max_length=100)
-    prop_telephone = models.CharField(max_length=15,unique=True)
+    prop_telephone = models.CharField(max_length=20)
     statut_commercial = models.CharField(max_length=100, default='Disponible')
     degre_importance = models.CharField(max_length=100)
     etat_bien = models.CharField(max_length=100, default='Neuf')

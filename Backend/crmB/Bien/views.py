@@ -144,6 +144,22 @@ class BienListCreateView(generics.ListCreateAPIView):
         return queryset.order_by('-date_creation') 
     
     def perform_create(self, serializer):
+         # Récupérer les données validées
+        data = serializer.validated_data
+        
+        # Vérifier si le téléphone existe dans les données
+        if 'prop_telephone' in data and data['prop_telephone']:
+            # Extraire les 9 derniers chiffres du téléphone
+            prop_telephone = data['prop_telephone'][-9:]
+            
+            # Vérifier si un lead avec ce numéro de téléphone existe déjà
+            lead_ancient = Bien.objects.filter(telephone__endswith=prop_telephone)
+            
+            if lead_ancient.exists():
+                # Si un doublon est trouvé, lever une exception
+                from rest_framework.exceptions import ValidationError
+                raise ValidationError({'error': 'Ce lead est déjà dans la base de données'})
+        
         bien = serializer.save(id_utilisateur=self.request.user)
         # Vérifier et notifier les leads conformes
         from Notifications.services import verifier_et_notifier_leads_conformes
