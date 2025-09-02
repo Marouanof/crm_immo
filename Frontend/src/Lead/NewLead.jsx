@@ -64,7 +64,12 @@ const LeadNouveau = ({ OnRefresh }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("/lead/leads/");
+                const res = await axios.get(`${apiUrl}/lead/leads/`,{
+                    headers: {
+                        'Content-Type': "application/json",
+                        Authorization: `Bearer ${token}` 
+            },
+                });
                 setLeads(res.data.filter(lead => lead.statut === "Nouveau"));
                 setLoading(false);
             } catch (error) {
