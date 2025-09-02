@@ -8,6 +8,7 @@ import { IoFilter } from "react-icons/io5";
 
 const LeadNouveau = ({ OnRefresh }) => {
     const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    const token = localStorage.getItem("access_token");
     const [leads, setLeads] = useState([]);
     const [selectedLead, setSelectedLead] = useState(null);
     const [commerciaux, setCommerciaux] = useState([]);
@@ -98,7 +99,12 @@ const LeadNouveau = ({ OnRefresh }) => {
 
             alert("Lead affecté avec succès !");
             // Recharger les données après affectation
-            const res = await axios.get(`${apiUrl}/lead/leads/`);
+            const res = await axios.get(`${apiUrl}/lead/leads/`,{
+                headers: {
+                    'Content-Type': "application/json",
+                    Authorization: `Bearer ${token}` 
+                    },
+            });
             setLeads(res.data.filter(lead => lead.statut === "Nouveau"));
             
             setSelectedLead(null);
