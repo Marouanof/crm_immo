@@ -37,7 +37,10 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
         ascenseur: false,
         jardin: false,
         terrasse: false,
-        garage: false
+        garage: false,
+        balcon: false,
+        parking: false,
+        meuble: false
     });
 
     const [quartiers, setQuartiers] = useState({
@@ -74,6 +77,9 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                 jardin: lead.jardin || false,       // <-- ajouté
                 terrasse: lead.terrasse || false,   // <-- ajouté
                 garage: lead.garage || false,
+                balcon: lead.balcon || false,
+                parking: lead.parking || false,
+                meuble: lead.meuble || false,
             });
             const ville = lead.quartiers?.[0]?.ville || '';
             const quartierArr = lead.quartiers?.map(q => q.quartier) || [];
@@ -293,6 +299,23 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                     <input type="checkbox" className="form-check-input" name="garage" checked={formData.garage} onChange={handleChange} />
                     <label className="form-check-label">Garage</label>
                 </div>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
+                        <label className="form-check-label">Balcon</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
+                        <label className="form-check-label">Parking</label>
+                    </div>
+                </div>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
+                        <label className="form-check-label">Meublé</label>
+                    </div>
+                    
+                </div>
 
                
 

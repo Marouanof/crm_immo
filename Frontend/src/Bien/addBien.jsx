@@ -38,6 +38,9 @@ const AddBien = ({onCancel, onSuccess}) => {
         jardin: false,
         terrasse: false,
         garage: false,
+        balcon: false,
+        parking: false,
+        meuble: false,
         is_validated: false
     });
 
@@ -232,6 +235,22 @@ const AddBien = ({onCancel, onSuccess}) => {
                             <label className="form-check-label">Garage</label>
                         </div>
                     </div>
+                    <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
+                        <label className="form-check-label">Balcon</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
+                        <label className="form-check-label">Parking</label>
+                    </div>
+                </div>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
+                        <label className="form-check-label">Meublé</label>
+                    </div>
+                </div>
                 </div>
                 
                 

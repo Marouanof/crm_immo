@@ -118,6 +118,13 @@ class AjouterLeadAPIView(APIView):
                 source=data.get('source'),
                 degre_interet=data.get('degre_interet'),
                 etat_bien=data.get('etat_bien'),
+                ascenseur=data.get('ascenseur'),
+                jardin=data.get('jardin'),
+                terrasse=data.get('terrasse'),
+                garage=data.get('garage'),
+                balcon=data.get('balcon'),
+                parking=data.get('parking'),
+                meuble=data.get('meuble'),
                 statut=statut_lead
             )
 
@@ -143,7 +150,7 @@ class AjouterLeadAPIView(APIView):
 
 
 class LeadListAPIView(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         leads = Lead.objects.all().order_by('-date_creation')
         serializer = LeadSerializer(leads, many=True)

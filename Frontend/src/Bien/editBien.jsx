@@ -35,6 +35,13 @@ export default function EditBien( { idBien, onCancel, onSuccess }){
         statut_commercial: 'Disponible',
         degre_importance: '',
         etat_bien: '',
+        ascenseur: false,
+        terrasse: false,
+        garage: false,
+        jardin: false,
+        balcon: false,
+        parking: false,
+        meuble: false,
         is_validated: false
         })
 
@@ -240,6 +247,18 @@ export default function EditBien( { idBien, onCancel, onSuccess }){
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" name="is_validated" checked={formData.is_validated} onChange={handleChange} />
                     <label className="form-check-label">Validé</label>
+                </div>
+                 <div className="mb-3 form-check">
+                    <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
+                    <label className="form-check-label">Balcon</label>
+                </div>
+                 <div className="mb-3 form-check">
+                    <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
+                    <label className="form-check-label">Parking</label>
+                </div>
+                 <div className="mb-3 form-check">
+                    <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
+                    <label className="form-check-label">Meublé</label>
                 </div>
                 <button type="submit" className="btn me-3" style={{ backgroundColor: "#fa036b", color: "white" }}>Modifier</button>
                 <button onClick={onCancel} className="btn " style={{ backgroundColor: "#eee", color: "#333" }}>Annuler</button>

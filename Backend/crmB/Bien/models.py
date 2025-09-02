@@ -24,6 +24,9 @@ class Bien(models.Model):
     jardin = models.BooleanField(default=False)
     terrasse = models.BooleanField(default=False)
     garage = models.BooleanField(default=False)
+    balcon = models.BooleanField(default=False)
+    parking = models.BooleanField(default=False)
+    meuble = models.BooleanField(default=False)
     date_creation = models.DateTimeField(auto_now_add=True)
     date_modification = models.DateTimeField(auto_now=True)
 

@@ -23,7 +23,10 @@ const AddLead = ({onCancel, onSuccess}) => {
         ascenseur: false,
         jardin: false,
         terrasse: false,
-        garage: false
+        garage: false,
+        balcon: false,
+        parking: false,
+        meuble: false
     });
 
     const [quartiers, setQuartiers] = useState({
@@ -57,9 +60,13 @@ const AddLead = ({onCancel, onSuccess}) => {
     const regex = /^(?:\+212|0)\d{9}$/;
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value}); 
-    };
+        const { type, name, checked, value } = e.target;
 
+        setFormData({
+            ...formData,
+            [name]: type === "checkbox" ? checked : value,
+        });
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(!regex.test(formData.telephone)){
@@ -290,7 +297,22 @@ const AddLead = ({onCancel, onSuccess}) => {
                         <label className="form-check-label">Garage</label>
                     </div>
                 </div>
-                
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="balcon" checked={formData.balcon} onChange={handleChange} />
+                        <label className="form-check-label">Balcon</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="parking" checked={formData.parking} onChange={handleChange} />
+                        <label className="form-check-label">Parking</label>
+                    </div>
+                </div>
+                <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
+                        <label className="form-check-label">Meublé</label>
+                    </div>
+                </div>
                 
                 <div className="mt-4">
                     <button type="submit" className="btn  me-3" style={{ backgroundColor: "#fa036b", color: "white" }}>Ajouter le lead</button>

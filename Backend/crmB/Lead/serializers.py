@@ -78,6 +78,9 @@ class LeadSerializer(serializers.ModelSerializer):
             'jardin',
             'terrasse',
             'garage',
+            'balcon',
+            'parking',
+            'meuble',
             'date_creation'    
         ]
 
