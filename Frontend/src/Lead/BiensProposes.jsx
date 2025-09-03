@@ -147,6 +147,13 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
     }
     };
 
+    // Fonction d'affichage
+    const displayBudget = (budget) => {
+    if (budget == -1) {
+        return 'Flexible';
+    }
+    return `${budget} DH`;
+    };
     const fetchBiens = async () => {
         try {
             setLoading(true);
@@ -163,11 +170,23 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
             params.append('statut_commercial','Disponible');
             params.append('surface', lead.surface);
             params.append('etat_bien',lead.etat_bien);
-            [...new Set(lead.quartiers.map(q => q.quartier))].forEach(quartier => {
-            params.append('quartiers', quartier);
-            });
+            // Vérifier si "Tout" est sélectionné comme quartier
+            const hasToutQuartier = lead.quartiers.some(q => 
+                q.quartier && q.quartier.toLowerCase() === 'tout'
+            );
+            
+            if (!hasToutQuartier) {
+                // Si "Tout" n'est pas sélectionné, ajouter les quartiers normalement
+                [...new Set(lead.quartiers.map(q => q.quartier))].forEach(quartier => {
+                    if (quartier) { // Vérifier que le quartier n'est pas null/undefined
+                        params.append('quartiers', quartier);
+                    }
+                });
+            }
+            // Si "Tout" est sélectionné, on n'ajoute pas de filtre de quartier
+            
             [...new Set(lead.quartiers.map(q => q.nbr_chambre.toString()))].forEach(chambre => {
-            params.append('chambres', chambre);
+                params.append('chambres', chambre);
             });
             const response = await axios.get(`${apiUrl}/bien/api/biens/`, {
                 params,
@@ -283,7 +302,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                         <div className="mb-3 p-3 bg-light rounded">
                             <h5>Critères de recherche :</h5>
                             <ul className="mb-0">
-                                <li>Budget : {lead.budget} dhs (±15%)</li>
+                                <li>Budget : {displayBudget(lead.budget)} (±15%)</li>
                                 <li>Ville : {lead.quartiers[0].ville || "Non spécifiée"}</li>
                                 <li>Quartiers : {[...new Set(lead.quartiers.map(q => q.quartier))].join(', ')}</li>
                                 <li>Nombre de chambres : {[...new Set(lead.quartiers.map(q => q.nbr_chambre))].join(', ')}</li>

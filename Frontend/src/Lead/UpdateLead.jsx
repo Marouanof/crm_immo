@@ -34,6 +34,7 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
         garage: false,
         balcon: false,
         parking: false,
+        piscine: false,
         meuble: false
     });
 
@@ -73,6 +74,7 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                 garage: lead.garage || false,
                 balcon: lead.balcon || false,
                 parking: lead.parking || false,
+                piscine: lead.piscine || false,
                 meuble: lead.meuble || false,
             });
             const ville = lead.quartiers?.[0]?.ville || '';
@@ -181,7 +183,19 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
 
                 <div className="row mb-3">
                     <div className="col">
-                        <input type="text" className="form-control" placeholder="Type de bien" name="type_bien" value={formData.type_bien} onChange={handleChange} required />
+                        <select className="form-control" name="type_bien" value={formData.type_bien} onChange={handleChange} required >
+                                <option value="">-- Sélectionner le type du bien --</option>
+                                <option value="Appartement">Appartement</option>
+                                <option value="Bureau">Bureau</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Ferme">Ferme</option>
+                                <option value="Immeuble">Immeuble</option>
+                                <option value="Maison">Maison</option>
+                                <option value="Riad">Riad</option>
+                                <option value="Terrain">Terrain</option>
+                                <option value="Villa">Villa</option>
+                                <option value="Local">Local</option>
+                        </select>
                     </div>
                     <div className="col">
                         <input type="text" className="form-control" placeholder="Type de transaction" name="type_transaction" value={formData.type_transaction} onChange={handleChange} required />
@@ -310,6 +324,10 @@ const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => 
                     <div className="col1 mb-3 form-check">
                         <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
                         <label className="form-check-label">Meublé</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="piscine" checked={formData.piscine} onChange={handleChange} />
+                        <label className="form-check-label">Piscine</label>
                     </div>
                 </div>
                 <div className="mt-4">

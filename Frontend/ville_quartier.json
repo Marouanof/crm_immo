@@ -16,7 +16,7 @@
             "Al Qods",
             "Alsace Lorraine",
             "Anfa",
-            "Autre secteur",
+            "Autre",
             "Bachkou",
             "Beauséjour",
             "Belvédère",
@@ -102,6 +102,7 @@
             "Sidi Othmane",
             "Sour Jdid",
             "Tantonville",
+            "Tout",
             "Triangle d'Or",
             "Val d'Anfa",
             "Val Fleuri",
@@ -114,7 +115,9 @@
       "ville": "Dar Bouazza",
       "quartiers": [
         "Tamaris",
-        "Errahma"
+        "Errahma",
+        "Tout",
+        "Autre"
       ]
     },
     {
@@ -124,7 +127,9 @@
         "Ville Verte",
         "Prestigia",
         "Centre-ville",
-        "Résidence CGI"
+        "Résidence CGI",
+        "Tout",
+        "Autre"
       ]
     },
     {
@@ -133,7 +138,9 @@
       "quartiers": [
         "Centre-ville",
         "Zone Aéroport Mohammed V",
-        "Oulad Azzouz"
+        "Oulad Azzouz",
+        "Tout",
+        "Autre"
       ]
     },
     {
@@ -141,7 +148,9 @@
       "ville": "Médiouna",
       "quartiers": [
         "Centre-ville",
-        "Mellil"
+        "Mellil",
+        "Tout",
+        "Autre"
       ]
     },
     {
@@ -152,7 +161,7 @@
             "Abi Ragrag",
             "Agdal",
             "Al Irfane",
-            "Autre secteur",
+            "Autre",
             "Aviation",
             "Aviation - Mabella",
             "Diour Jamaa",
@@ -179,6 +188,7 @@
             "Riyad Extension",
             "Souissi",
             "Taqaddoum",
+            "Tout",
             "Yacoub El Mansour"
         ]
     },
@@ -203,7 +213,7 @@
             "Arset Moulay Moussa",
             "Assif",
             "Assouel",
-            "Autre secteur",
+            "Autre",
             "Av Abdelkrim El Khattabi",
             "Av Mohammed V",
             "Av Mohammed VI",
@@ -305,6 +315,7 @@
             "Socoma",
             "Sofia",
             "Targa",
+            "Tout",
             "Victor Hugo",
             "Zaouia Sidi Ghalem",
             "Zaouiat Lahdar",
@@ -333,7 +344,7 @@
             "Al Mandar Al Jamil",
             "Al Warda",
             "Aouama Gharbia",
-            "Autre secteur",
+            "Autre",
             "Aviation",
             "Azib Haj Kaddour",
             "Beausejour",
@@ -426,6 +437,7 @@
             "Star Hill",
             "Tanger City Center",
             "Tanja Balia",
+            "Tout",
             "Val Fleuri",
             "Vieille Montagne",
             "Zemmouri",
@@ -446,7 +458,7 @@
             "Ain Noqbi",
             "Al Hadiqa",
             "Ancienne Médina",
-            "Autre secteur",
+            "Autre",
             "Bad Boujloud",
             "Batha",
             "Belkhiat",
@@ -504,6 +516,7 @@
             "Sidi Brahim",
             "Talaa",
             "Tghat",
+            "Tout",
             "Zekak Erroumane",
             "Zone Industrielle Sidi Brahim",
             "Zouagha"
@@ -515,7 +528,7 @@
         "quartiers": [
             "Al Qods",
             "Amal",
-            "Autre secteur",
+            "Autre",
             "Belle Vue",
             "Centre Ville",
             "Corniche",
@@ -560,6 +573,7 @@
             "Riad 1",
             "Riad 2",
             "Tenoukchet",
+            "Tout",
             "Wafa",
             "Yassmine",
             "Zone industrielle"
@@ -570,7 +584,7 @@
     "ville": "Safi",
     "quartiers": [
         "Achbar",
-        "Autre secteur",
+        "Autre",
         "Azib Derai",
         "Bahia",
         "Biar",
@@ -626,6 +640,7 @@
         "Sidi Bouzid",
         "Swinia",
         "Trab Assini",
+        "Tout",
         "Ville Nouvelle",
         "Wad El Bacha",
         "Zawiyat Sidi Wassel"
@@ -645,7 +660,7 @@
         "Anza",
         "Arghoud",
         "Assaka",
-        "Autre secteur",
+        "Autre",
         "Av des Far",
         "Av Mokawama",
         "Ben Serguaou",
@@ -689,6 +704,7 @@
         "Talborjt",
         "Tamraght",
         "Tassila",
+        "Tout",
         "Tilila",
         "Ville Nouvelle",
         "Wifaq",
@@ -705,7 +721,7 @@
         "Ain Atig",
         "Al Moustakbal",
         "Andalousse",
-        "Autre secteur",
+        "Autre",
         "Centre Ville",
         "Cigali Cigalon",
         "Comatrav",
@@ -748,6 +764,7 @@
         "Skikina",
         "Talaa",
         "Temara Plage",
+        "Tout",
         "Val d'or",
         "Wifak",
         "Wufac Erac"
@@ -763,6 +780,7 @@
         "Al Moukataa",
         "Andalouss",
         "Annaim",
+        "Autre",
         "Bab Al Bahr",
         "Bab Sebta",
         "Bettana",
@@ -803,7 +821,7 @@
         "Sidi Moussa",
         "Tabriquet",
         "Technopolis",
-        "Toute la ville",
+        "Tout",
         "Zone Industrielle Hay Arrahma",
         "Zone Industrielle Saniat Sbihi"
     ]
@@ -818,7 +836,7 @@
         "Alliance",
         "Al Maghrib Al Arabi",
         "Assam",
-        "Autre secteur",
+        "Autre",
         "Bab Fès",
         "Bir Anzarane",
         "Bir Rami",
@@ -855,6 +873,7 @@
         "Saknia",
         "Seyad",
         "Taïbia",
+        "Tout",
         "Val Fleury",
         "Village"
     ]
@@ -865,7 +884,7 @@
     "quartiers": [
         "Al Azhar",
         "Al Mallalienne",
-        "Autre secteur",
+        "Autre",
         "Bled",
         "Borj",
         "Boujdade",
@@ -904,6 +923,7 @@
         "Touabel",
         "Touilaa",
         "Touilaa Foqia",
+        "Tout",
         "Trankat",
         "Wilaya",
         "Ziana"
@@ -919,7 +939,7 @@
         "Al Kodia",
         "Al Qods",
         "Amal",
-        "Autre secteur",
+        "Autre",
         "Biranzarane",
         "Centre",
         "Cheminoits",
@@ -949,7 +969,8 @@
         "Riad Essalam",
         "Saada",
         "Salama",
-        "Sidi Moussa"
+        "Sidi Moussa",
+        "Tout"
     ]
 },
 {
@@ -958,6 +979,7 @@
     "quartiers": [
         "Ahl Agadir",
         "Argana",
+        "Autre",
         "Arrière Pays",
         "Bab Al Bahar",
         "Bab Doukkala",
@@ -991,7 +1013,7 @@
         "Tafoukt",
         "Tamanar",
         "Tidzi",
-        "Toute la ville"
+        "Tout"
     ]
 },
 {
@@ -999,10 +1021,11 @@
     "ville": "Bouznika",
     "quartiers": [
         "Al Kawtar",
-        "Autre secteur",
+        "Autre",
         "Hamza",
         "Plage Oued Cherrat",
-        "Quartier Industriel"
+        "Quartier Industriel",
+        "Tout"
     ]
 },
 {
@@ -1012,7 +1035,7 @@
         "Agdal",
         "Ancienne Medina",
         "Andalous",
-        "Autre secteur",
+        "Autre",
         "Bd Allal El Fassi",
         "Bd Derfoufi",
         "Bd Hassan II",
@@ -1044,7 +1067,8 @@
         "Riad Isli",
         "Route Jerada",
         "Route Tayret",
-        "Sidi Yahya"
+        "Sidi Yahya",
+        "Tout"
     ]
 },
 {
@@ -1053,6 +1077,7 @@
     "quartiers": [
         "Ahbas",
         "Alouane",
+        "Autre",
         "Hay Al Kamal",
         "Hay Kassam",
         "Hay Kilz",
@@ -1065,7 +1090,7 @@
         "Smaâla",
         "Tahiri",
         "Tanmiya",
-        "Toute la ville"
+        "Tout"
     ]
 },
 {
@@ -1074,7 +1099,7 @@
     "quartiers": [
         "Administratif",
         "Al Filline",
-        "Autre secteur",
+        "Autre",
         "Hay Al Hassani",
         "Hay Al Mohammadi",
         "Hay Farah",
@@ -1085,7 +1110,8 @@
         "Lallamaryem",
         "Les Chenes",
         "Quartier Soufal",
-        "Quods"
+        "Quods",
+        "Tout"
     ]
 },
 {
@@ -1096,11 +1122,12 @@
         "Ain Errouz",
         "Ain Laatris",
         "Al Fath",
-        "Autre secteur",
+        "Autre",
         "Belkhir",
         "Imarat",
         "Kasbah",
-        "Plage Rose Marae"
+        "Plage Rose Marae",
+        "Tout"
     ]
 }
 ]

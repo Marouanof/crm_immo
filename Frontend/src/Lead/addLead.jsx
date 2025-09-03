@@ -26,6 +26,7 @@ const AddLead = ({onCancel, onSuccess}) => {
         garage: false,
         balcon: false,
         parking: false,
+        piscine: false,
         meuble: false
     });
 
@@ -151,6 +152,7 @@ const AddLead = ({onCancel, onSuccess}) => {
                             <option value="Riad">Riad</option>
                             <option value="Terrain">Terrain</option>
                             <option value="Villa">Villa</option>
+                            <option value="Local">Local</option>
                         </select>
                     </div>
                     <div className="col2">
@@ -191,11 +193,11 @@ const AddLead = ({onCancel, onSuccess}) => {
                 <div className="div-input mb-3">
                     <div className="col1">
                         <label>Budget</label>
-                        <input type="number" className="form-control" placeholder="Budget" name="budget" value={formData.budget} onChange={handleChange} required />
+                        <input type="number" className="form-control" placeholder="Budget en DH ou -1 pour flexible" min="-1" name="budget" value={formData.budget} onChange={handleChange} required />
                     </div>
                     <div className="col2">
                         <label>Surface</label>
-                        <input type="number" className="form-control" placeholder="Surface" name="surface" value={formData.surface} onChange={handleChange} required />
+                        <input type="number" className="form-control" placeholder="Surface en m² ou -1 pour flexible" min="-1" name="surface" value={formData.surface} onChange={handleChange} required />
                     </div>
                 </div>
 
@@ -302,6 +304,10 @@ const AddLead = ({onCancel, onSuccess}) => {
                     <div className="col1 mb-3 form-check">
                         <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
                         <label className="form-check-label">Meublé</label>
+                    </div>
+                    <div className="col2 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="piscine" checked={formData.piscine} onChange={handleChange} />
+                        <label className="form-check-label">Piscine</label>
                     </div>
                 </div>
                 

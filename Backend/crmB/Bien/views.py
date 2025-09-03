@@ -79,14 +79,19 @@ class BienListCreateView(generics.ListCreateAPIView):
             queryset = queryset.filter(nbr_chambre__in=chambres)
         
         if quartiers:
-            queryset = queryset.filter(quartier__in=quartiers)
+            if not any(q.lower() == 'tout' for q in quartiers):
+                # Si "tout" n'est pas présent, filtrer normalement par quartiers
+                queryset = queryset.filter(quartier__in=quartiers)
             
         if budget_lead:
             try:
                 budget = float(budget_lead)
-                min_price = budget * 0.85
-                max_price = budget * 1.15
-                queryset = queryset.filter(prix__gte=min_price, prix__lte=max_price)
+                # Si le budget est -1 (flexible), on ne filtre pas par prix
+                if budget != -1:
+                    min_price = budget * 0.85
+                    max_price = budget * 1.15
+                    queryset = queryset.filter(prix__gte=min_price, prix__lte=max_price)
+                # Si c'est -1, on ne fait rien (pas de filtrage par prix)
             except ValueError:
                 pass
         
@@ -147,21 +152,6 @@ class BienListCreateView(generics.ListCreateAPIView):
         return queryset.order_by('-date_creation') 
     
     def perform_create(self, serializer):
-         # Récupérer les données validées
-        data = serializer.validated_data
-        
-        # Vérifier si le téléphone existe dans les données
-        if 'prop_telephone' in data and data['prop_telephone']:
-            # Extraire les 9 derniers chiffres du téléphone
-            prop_telephone = data['prop_telephone'][-9:]
-            
-            # Vérifier si un lead avec ce numéro de téléphone existe déjà
-            lead_ancient = Bien.objects.filter(prop_telephone__endswith=prop_telephone)
-            
-            if lead_ancient.exists():
-                # Si un doublon est trouvé, lever une exception
-                from rest_framework.exceptions import ValidationError
-                raise ValidationError({'error': 'Ce lead est déjà dans la base de données'})
         
         bien = serializer.save(id_utilisateur=self.request.user)
         # Vérifier et notifier les leads conformes

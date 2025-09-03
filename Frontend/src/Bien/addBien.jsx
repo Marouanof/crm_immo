@@ -34,6 +34,7 @@ const AddBien = ({onCancel, onSuccess}) => {
         garage: false,
         balcon: false,
         parking: false,
+        piscine: false,
         meuble: false,
         is_validated: false
     });
@@ -115,6 +116,7 @@ const AddBien = ({onCancel, onSuccess}) => {
                                 <option value="Riad">Riad</option>
                                 <option value="Terrain">Terrain</option>
                                 <option value="Villa">Villa</option>
+                                <option value="Local">Local</option>
                             </select>
                         </div>
                         <div className="mb-3">
@@ -235,6 +237,10 @@ const AddBien = ({onCancel, onSuccess}) => {
                     </div>
                 </div>
                 <div className="div-input">
+                    <div className="col1 mb-3 form-check">
+                        <input type="checkbox" className="form-check-input" name="piscine" checked={formData.piscine} onChange={handleChange} />
+                        <label className="form-check-label">Piscine</label>
+                    </div>
                     <div className="col1 mb-3 form-check">
                         <input type="checkbox" className="form-check-input" name="meuble" checked={formData.meuble} onChange={handleChange} />
                         <label className="form-check-label">Meublé</label>

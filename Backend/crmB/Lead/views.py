@@ -127,6 +127,7 @@ class AjouterLeadAPIView(APIView):
                 garage=data.get('garage'),
                 balcon=data.get('balcon'),
                 parking=data.get('parking'),
+                piscine=data.get('piscine'),
                 meuble=data.get('meuble'),
                 statut=statut_lead
             )
