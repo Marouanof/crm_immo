@@ -68,10 +68,13 @@ class BienListCreateView(generics.ListCreateAPIView):
 
         if surface:
             try:
-                s = float(surface)
-                min_s = s * 0.85
-                max_s = s * 1.15
-                queryset = queryset.filter(superficie__gte=min_s, superficie__lte=max_s)
+                if surface == -1 or surface == '-1':
+                    pass
+                else:
+                    s = float(surface)
+                    min_s = s * 0.85
+                    max_s = s * 1.15
+                    queryset = queryset.filter(superficie__gte=min_s, superficie__lte=max_s)
             except ValueError:
                 pass
 

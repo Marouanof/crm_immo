@@ -154,6 +154,12 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
     }
     return `${budget} DH`;
     };
+    const displaySurface = (surface) => {
+        if (surface == -1) {
+            return 'Flexible';
+        }
+        return `${surface} DH`;
+        };
     const fetchBiens = async () => {
         try {
             setLoading(true);
@@ -306,7 +312,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                                 <li>Ville : {lead.quartiers[0].ville || "Non spécifiée"}</li>
                                 <li>Quartiers : {[...new Set(lead.quartiers.map(q => q.quartier))].join(', ')}</li>
                                 <li>Nombre de chambres : {[...new Set(lead.quartiers.map(q => q.nbr_chambre))].join(', ')}</li>
-                                <li>Surface : {lead.surface} m² (±15%)</li>
+                                <li>Surface : {displaySurface(lead.surface)} (±15%)</li>
                                 <li>Type de bien : {lead.type_bien}</li>
                                 <li>Transaction : {lead.type_transaction}</li>
                                 <li>Etat du Bien : {lead.etat_bien}</li>
