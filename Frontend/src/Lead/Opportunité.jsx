@@ -245,13 +245,13 @@ return (
                 <td>{lead.prenom}</td>
                 <td>{lead.email}</td>
                 <td>{lead.telephone}</td>
-                {/* <td>
+                <td>
                   <PropositionsButton
                     lead={lead}
                     onClick={handleProposeBiens}
                     onCancel={() => setShowPropositionModal(false)}
                   />
-                </td> */}
+                </td>
                 
                 <td>{associatedBiens[lead.id]?.length > 0 ? (
                   <ul>{associatedBiens[lead.id].map((bien, index) => (
@@ -318,7 +318,7 @@ return (
         </table>
         </div>
 
-        {/* <Modal isOpen={showPropositionModal} onClose={() => setShowPropositionModal(false)}>
+        <Modal isOpen={showPropositionModal} onClose={() => setShowPropositionModal(false)}>
             <BiensProposes 
                       leadSelected={selectedLead} 
                       onCancel={()=> setShowPropositionModal(false)}
@@ -327,7 +327,7 @@ return (
                         onRefresh(); // ← Rafraîchir les counts
                       }}
             />
-        </Modal> */}
+        </Modal>
         <div className="d-flex justify-content-between align-items-center div-pagination">
                 <div className="div-text-pagination">
             Affichage de {(filteredData.length === 0) ? indexOfFirstRow :  indexOfFirstRow + 1} à {Math.min(indexOfLastRow, filteredData.length)} sur {filteredData.length} entrées

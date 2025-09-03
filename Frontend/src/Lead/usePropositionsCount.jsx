@@ -9,24 +9,34 @@ export default function usePropositionsCount(lead) {
   useEffect(() => {
     const fetchCount = async () => {
       if (!lead?.id) return;
+      const quartiers = Array.isArray(lead?.quartiers) ? lead.quartiers : [];
+      if (quartiers.length === 0) {
+        setCount(0);
+        return;
+      }
       setLoading(true);
       try {
         const token = localStorage.getItem('access_token');
         const params = new URLSearchParams();
             params.append('is_validated', 'true');
-            params.append('ville',lead.quartiers[0].ville);
-            params.append('budget_lead' , lead.budget);
-            params.append('type_bien',lead.type_bien);
-            params.append('type_transaction', lead.type_transaction === "Achat" ? "Vente":lead.type_transaction);
+            if (quartiers[0]?.ville) params.append('ville', quartiers[0].ville);
+            if (lead?.budget != null) params.append('budget_lead' , String(lead.budget));
+            if (lead?.type_bien) params.append('type_bien', lead.type_bien);
+            if (lead?.type_transaction) params.append('type_transaction', lead.type_transaction === "Achat" ? "Vente" : lead.type_transaction);
             params.append('statut_commercial','Disponible');
-            params.append('surface', lead.surface);
-            params.append('etat_bien',lead.etat_bien);
-            [...new Set(lead.quartiers.map(q => q.quartier))].forEach(quartier => {
-            params.append('quartiers', quartier);
-            });
-            [...new Set(lead.quartiers.map(q => q.nbr_chambre.toString()))].forEach(chambre => {
-            params.append('chambres', chambre);
-            });
+            if (lead?.surface != null) params.append('surface', String(lead.surface));
+            if (lead?.etat_bien) params.append('etat_bien', lead.etat_bien);
+
+            const hasToutQuartier = quartiers.some(q => q?.quartier && q.quartier.toLowerCase() === 'tout');
+            if (!hasToutQuartier) {
+              [...new Set(quartiers.map(q => q?.quartier).filter(Boolean))].forEach(quartier => {
+                params.append('quartiers', quartier);
+              });
+            }
+            [...new Set(quartiers.map(q => (q?.nbr_chambre != null ? String(q.nbr_chambre) : null)).filter(Boolean))]
+              .forEach(chambre => {
+                params.append('chambres', chambre);
+              });
 
         const res = await axios.get(`${apiUrl}/bien/api/biens/`, {
           params,
