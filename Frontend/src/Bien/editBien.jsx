@@ -14,6 +14,7 @@ export default function EditBien( { idBien, onCancel, onSuccess }){
     const id = idBien
         const navigate = useNavigate()
         const [formData,setFormData] = useState({
+        reference: '',
         type_bien: '',
         type_transaction: '',
         prix: '',
@@ -112,7 +113,11 @@ export default function EditBien( { idBien, onCancel, onSuccess }){
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-md-6">
-                        <div className="mb-3">
+                            <div className="mb-3">
+                                <div className="mb-3">
+                                <label className="form-label">Prix</label>
+                                <input type="number" className="form-control" name="prix" value={formData.reference} onChange={handleChange} required />
+                            </div>
                             <label className="form-label">Type de bien</label>
                             <select className="form-control" name="type_bien" value={formData.type_bien} onChange={handleChange} required >
                                 <option value="">-- Sélectionner le type du bien --</option>
