@@ -345,7 +345,7 @@ const ListBiens = () => {
                                     <td>{bien.quartier}</td>
                                     <td>
                                         <a 
-                                            href={`https://www.google.com/maps/search/?api=1&query=${bien.adresse}, ${bien.quartier}, ${bien.ville}`} 
+                                            href={`${bien.adresse}`} 
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="text-primary"

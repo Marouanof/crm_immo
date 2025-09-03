@@ -62,7 +62,7 @@ export default function InfoBien({ bien, onClose }) {
               </div>
               
               <a 
-                href={`https://www.google.com/maps/search/?api=1&query=${bien.adresse}, ${bien.quartier}, ${bien.ville}`} 
+                href={`${bien.adresse}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="map-button"
