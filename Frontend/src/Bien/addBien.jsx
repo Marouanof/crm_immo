@@ -5,13 +5,7 @@ import NavBar from '../Partie/navbar'
 import Select from 'react-select';
 import ville_data from '../../ville_quartier.json';
 
-const villeOptions = [
-        { value: 'Casablanca', label: 'Casablanca'},
-        { value: 'Marrakech', label: 'Marrakech'},
-        { value: 'Mohammedia', label: 'Mohammedia'},
-        { value: 'Rabat', label: 'Rabat'},
-        { value: 'Tanger', label: 'Tanger'},
-    ]
+const villeOptions = ville_data.map(r => ({label: r.ville, value: r.ville}));
 
 const AddBien = ({onCancel, onSuccess}) => {
     const apiUrl = import.meta.env.VITE_API_BASE_URL;

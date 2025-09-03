@@ -13,13 +13,7 @@ const nbrChambreOptions = [
     { value: '6', label: 6 },
 ];
 
-const villeOptions = [
-    { value: 'Casablanca', label: 'Casablanca'},
-    { value: 'Marrakech', label: 'Marrakech'},
-    { value: 'Mohammedia', label: 'Mohammedia'},
-    { value: 'Rabat', label: 'Rabat'},
-    { value: 'Tanger', label: 'Tanger'},
-];
+const villeOptions = ville_data.map(r => ({label: r.ville, value: r.ville}));
 
 const UpdateLead = ({ lead, setSelectedLead, show, handleClose, onSuccess }) => {
     const apiUrl = import.meta.env.VITE_API_BASE_URL;

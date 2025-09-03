@@ -47,15 +47,9 @@ const AddLead = ({onCancel, onSuccess}) => {
         { value: '5', label: 5 },
         { value: '6', label: 6 },
         
-    ];
+    ]; 
 
-    const villeOptions = [
-        { value: 'Casablanca', label: 'Casablanca'},
-        { value: 'Marrakech', label: 'Marrakech'},
-        { value: 'Mohammedia', label: 'Mohammedia'},
-        { value: 'Rabat', label: 'Rabat'},
-        { value: 'Tanger', label: 'Tanger'},
-    ];
+    const villeOptions = ville_data.map(r => ({label: r.ville, value: r.ville}));
 
     const regex = /^(?:\+212|0)\d{9}$/;
 
