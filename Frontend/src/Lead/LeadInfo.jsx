@@ -32,6 +32,19 @@ function LeadInfo() {
     fetchLead();
   }, [id]);
 
+  const displaySurface = (surface) => {
+    if (surface == -1) {
+        return 'Flexible';
+    }
+    return `${surface} DH`;
+    };
+
+    const displayBudget = (budget) => {
+      if (budget == -1) {
+          return 'Flexible';
+      }
+      return formatCurrency(lead.budget);
+      };
   const getStatusBadge = (statut) => {
     const statusConfig = {
       'nouveau': { class: 'status-new', icon: '🆕', label: 'Nouveau' },
@@ -161,7 +174,7 @@ function LeadInfo() {
               <div className="card-icon">💰</div>
               <div className="card-content">
                 <h4>Budget</h4>
-                <p className="budget-amount">{formatCurrency(lead.budget)}</p>
+                <p className="budget-amount">{displayBudget(lead.budget)}</p>
                 <span className="budget-detail">Budget maximum</span>
               </div>
             </div>
@@ -170,7 +183,7 @@ function LeadInfo() {
               <div className="card-icon">📐</div>
               <div className="card-content">
                 <h4>Surface</h4>
-                <p>{lead.surface} m²</p>
+                <p>displaySurface(lead.surface)</p>
                 <span className="surface-detail">Surface souhaitée</span>
               </div>
             </div>

@@ -248,7 +248,7 @@ const AddLead = ({onCancel, onSuccess}) => {
                                 const selectedValues = selectedOptions.map(option => option.value);
                                 setQuartiers({...quartiers, quartier: selectedValues});
                             }}
-                            isOptionDisabled={() => quartiers.quartier.length >= 3}
+                            isOptionDisabled={() => quartiers.quartier.length >= 6}
                             />
                     </div>
 
