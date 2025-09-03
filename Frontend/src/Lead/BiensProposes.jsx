@@ -26,7 +26,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
     const fetchAssociatedBiens = async () => {
         try {
             const token = localStorage.getItem('access_token');
-            const response = await axios.get(`${apiUrl}/associated-biens/${lead.id}/`, {
+            const response = await axios.get(`${apiUrl}/lead/associated-biens/${lead.id}/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -375,7 +375,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
                                                 <td>{bien.quartier}</td>
                                                 <td>
                                                     <a 
-                                                        href={`https://www.google.com/maps/search/?api=1&query=${bien.adresse}, ${bien.quartier}, ${bien.ville}`} 
+                                                        href={`${bien.adresse}`} 
                                                         target="_blank" 
                                                         rel="noopener noreferrer"
                                                         className="text-decoration-none"
