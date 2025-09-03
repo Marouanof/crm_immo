@@ -25,6 +25,7 @@ class Lead(models.Model):
      garage = models.BooleanField(default=False)
      balcon = models.BooleanField(default=False)
      parking = models.BooleanField(default=False)
+     piscine = models.BooleanField(default=False)
      meuble = models.BooleanField(default=False)
      date_creation = models.DateTimeField(auto_now_add=True)
 
