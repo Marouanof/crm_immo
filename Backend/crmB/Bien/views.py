@@ -84,15 +84,19 @@ class BienListCreateView(generics.ListCreateAPIView):
                 queryset = queryset.filter(quartier__in=quartiers)
             
         if budget_lead:
-            # Vérifier si c'est "-1" (flexible) AVANT de convertir en float
-            if budget_lead != '-1':  # Compare directement la chaîne de caractères
-                try:
+            try:
+                # Vérifier si c'est "flexible" (valeur -1)
+                if budget_lead == '-1' or budget_lead == -1:
+                    # Si c'est flexible, on ne filtre PAS par prix
+                    pass
+                else:
+                    # Sinon, on applique le filtrage normal
                     budget = float(budget_lead)
                     min_price = budget * 0.85
                     max_price = budget * 1.15
                     queryset = queryset.filter(prix__gte=min_price, prix__lte=max_price)
-                except ValueError:
-                    pass
+            except ValueError:
+                pass
         
         if prix_min:
             try:
