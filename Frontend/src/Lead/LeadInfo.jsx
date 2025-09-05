@@ -36,15 +36,16 @@ function LeadInfo() {
     if (surface == -1) {
         return 'Flexible';
     }
-    return `${surface} DH`;
-    };
+    return `${surface} m²`;
+  };
 
-    const displayBudget = (budget) => {
-      if (budget == -1) {
-          return 'Flexible';
-      }
-      return formatCurrency(lead.budget);
-      };
+  const displayBudget = (budget) => {
+    if (budget == -1) {
+        return 'Flexible';
+    }
+    return formatCurrency(lead.budget);
+  };
+
   const getStatusBadge = (statut) => {
     const statusConfig = {
       'nouveau': { class: 'status-new', icon: '🆕', label: 'Nouveau' },
@@ -157,7 +158,6 @@ function LeadInfo() {
               <div className="card-content">
                 <h4>Email</h4>
                 <p>{lead.email}</p>
-                
               </div>
             </div>
 
@@ -166,7 +166,6 @@ function LeadInfo() {
               <div className="card-content">
                 <h4>Téléphone</h4>
                 <p>{lead.telephone}</p>
-                
               </div>
             </div>
 
@@ -183,7 +182,7 @@ function LeadInfo() {
               <div className="card-icon">📐</div>
               <div className="card-content">
                 <h4>Surface</h4>
-                <p>displaySurface(lead.surface)</p>
+                <p>{displaySurface(lead.surface)}</p>
                 <span className="surface-detail">Surface souhaitée</span>
               </div>
             </div>
@@ -209,7 +208,7 @@ function LeadInfo() {
 
             {lead.commercial && (
               <div className="info-card">
-                <div className="card-icon">👤</div>
+                <div className="card-icon">👔</div>
                 <div className="card-content">
                   <h4>Commercial assigné</h4>
                   <p>{lead.commercial.nom} {lead.commercial.prenom}</p>
@@ -235,29 +234,31 @@ function LeadInfo() {
             </div>
           
             <div className="info-card">
-              <div className="card-icon">👤</div>
+              <div className="card-icon">🌐</div>
               <div className="card-content">
                 <h4>Source</h4>
                 <p>{lead.source}</p>
-                
               </div>
             </div>
 
             <div className="info-card">
-              <div className="card-icon">👤</div>
+              <div className="card-icon">✅</div>
               <div className="card-content">
-                <h4>Critères  </h4>
+                <h4>Critères</h4>
                 <p>{
                     lead.ascenseur || lead.jardin || lead.terrasse || lead.garage
                     ? [
                         lead.ascenseur && "Ascenseur",
                         lead.jardin && "Jardin",
                         lead.terrasse && "Terrasse",
-                        lead.garage && "Garage"
+                        lead.garage && "Garage",
+                        lead.parking && "Parking",
+                        lead.balcon && "Balcon",
+                        lead.piscine && "Piscine",
+                        lead.meuble && "Meuble",
                         ].filter(Boolean).join(", ")
                     : "Aucune"
                 }</p>
-                
               </div>
             </div>
           </div>
@@ -371,16 +372,6 @@ function LeadInfo() {
           </div>
         )}
       </div>
-
-      {/* Actions footer */}
-      {/* <div className="lead-actions">
-        <button 
-          className="btn-action secondary"
-          onClick={() => navigate(-1)}
-        >
-          ← Retour à la liste
-        </button>
-      </div> */}
     </div>
   );
 }

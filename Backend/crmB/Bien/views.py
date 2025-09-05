@@ -68,12 +68,14 @@ class BienListCreateView(generics.ListCreateAPIView):
 
         if surface:
             try:
-                if surface == -1 or surface == '-1':
+                surface_value = float(surface)
+                if surface_value == -1:
+                    # Si surface est -1 (flexible), on ne filtre pas
                     pass
                 else:
-                    s = float(surface)
-                    min_s = s * 0.85
-                    max_s = s * 1.15
+                    # Appliquer la marge de 15%
+                    min_s = surface_value * 0.85
+                    max_s = surface_value * 1.15
                     queryset = queryset.filter(superficie__gte=min_s, superficie__lte=max_s)
             except ValueError:
                 pass
@@ -88,15 +90,14 @@ class BienListCreateView(generics.ListCreateAPIView):
             
         if budget_lead:
             try:
-                # Vérifier si c'est "flexible" (valeur -1)
-                if budget_lead == '-1' or budget_lead == -1:
-                    # Si c'est flexible, on ne filtre PAS par prix
+                budget_value = float(budget_lead)
+                if budget_value == -1:
+                    # Si budget est -1 (flexible), on ne filtre pas
                     pass
                 else:
-                    # Sinon, on applique le filtrage normal
-                    budget = float(budget_lead)
-                    min_price = budget * 0.85
-                    max_price = budget * 1.15
+                    # Appliquer la marge de 15%
+                    min_price = budget_value * 0.85
+                    max_price = budget_value * 1.15
                     queryset = queryset.filter(prix__gte=min_price, prix__lte=max_price)
             except ValueError:
                 pass

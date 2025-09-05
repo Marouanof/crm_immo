@@ -51,9 +51,8 @@ def bien_correspond_au_lead(bien, lead):
     if lead.type_bien.lower() != bien.type_bien.lower():
         return False
     
-    if lead.etat_bien.lower() != bien.etat_bien.lower():
+    if lead.etat_bien.lower() != 'tous' and lead.etat_bien.lower() != bien.etat_bien.lower():
         return False
-
     # Type de transaction
     if lead.type_transaction.lower() == 'achat' and bien.type_transaction.lower() != 'vente':
         return False
@@ -63,28 +62,50 @@ def bien_correspond_au_lead(bien, lead):
         return False
     
     # Budget (±15%)
-    budget_min = float(lead.budget) * 0.85
-    budget_max = float(lead.budget) * 1.15
-    if not (budget_min <= bien.prix <= budget_max):
-        return False
+    if lead.budget != -1:  # Seulement si ce n'est pas flexible
+        budget_min = float(lead.budget) * 0.85
+        budget_max = float(lead.budget) * 1.15
+        if not (budget_min <= bien.prix <= budget_max):
+            return False
     
-    surface_min = float(lead.surface) * 0.85
-    surface_max = float(lead.surface) * 1.15
-    if not (surface_min <= bien.superficie <=surface_max):
-        return False
+    if lead.surface != -1:  # Seulement si ce n'est pas flexible
+        surface_min = float(lead.surface) * 0.85
+        surface_max = float(lead.surface) * 1.15
+        if not (surface_min <= bien.superficie <= surface_max):
+            return False
     
-    # Localisation
+    # Localisation - Gestion du cas "Tout" pour les quartiers
     quartiers_lead = Quartier.objects.filter(id_lead=lead)
     if quartiers_lead.exists():
-        for quartier_lead in quartiers_lead:
-            if (quartier_lead.ville.lower() == bien.ville.lower() and 
-                quartier_lead.quartier.lower() == bien.quartier.lower()):
-                if quartier_lead.nbr_chambre and quartier_lead.nbr_chambre != bien.nbr_chambre:
-                    continue
-                return True
-        return False
-    else:
-        return True
+        # Vérifier si "Tout" est sélectionné dans au moins un quartier
+        has_tout_quartier = any(
+            q.quartier and q.quartier.lower() == 'tout' 
+            for q in quartiers_lead
+        )
+        
+        if has_tout_quartier:
+            # Si "Tout" est sélectionné, on vérifie seulement la ville
+            villes_lead = set(q.ville.lower() for q in quartiers_lead if q.ville)
+            if bien.ville.lower() not in villes_lead:
+                return False
+        else:
+            # Vérification normale par ville et quartier
+            correspond_quartier = False
+            for quartier_lead in quartiers_lead:
+                if (quartier_lead.ville and 
+                    quartier_lead.ville.lower() == bien.ville.lower() and 
+                    quartier_lead.quartier and 
+                    quartier_lead.quartier.lower() == bien.quartier.lower()):
+                    
+                    # Vérification du nombre de chambres si spécifié
+                    if quartier_lead.nbr_chambre and quartier_lead.nbr_chambre != bien.nbr_chambre:
+                        continue
+                    correspond_quartier = True
+                    break
+            
+            if not correspond_quartier:
+                return False
+    return True
     
 def notifier_leads_si_bien_non_disponible(bien, ancien_statut):
     """
@@ -147,3 +168,39 @@ def notifier_leads_si_bien_non_disponible(bien, ancien_statut):
                     )
     except Exception as e:
         print(f"Erreur de notification : {str(e)}")
+def verifier_et_notifier_biens_conformes(lead):
+    """Vérifie si un lead correspond à des biens existants et crée des notifications"""
+    try:
+        from Bien.models import Bien
+        
+        biens_conformes = Bien.objects.filter(statut_commercial='Disponible', is_validated=True)
+        biens_trouves = 0
+        
+        for bien in biens_conformes:
+            if bien_correspond_au_lead(bien, lead):
+                biens_trouves += 1
+                # Notifier le propriétaire du bien
+                if lead.id_utilisateur:
+                    Notification.objects.create(
+                        destinataire=lead.id_utilisateur,
+                        titre=f"Nouveau lead conforme à votre bien {bien.reference}",
+                        message=f"Un nouveau lead ({lead.nom} {lead.prenom}) correspond à votre bien {bien.reference}.",
+                        bien=bien,
+                        lead=lead
+                    )
+                
+                # Notifier les administrateurs
+                admins = Utilisateur.objects.filter(role__in=['admin', 'assistant',])
+                for admin in admins:
+                    Notification.objects.create(
+                        destinataire=admin,
+                        titre=f"Nouveau lead conforme au bien {bien.reference}",
+                        message=f"Lead {lead.nom} {lead.prenom} correspond au bien {bien.reference}",
+                        bien=bien,
+                        lead=lead
+                    )
+        
+        print(f"Lead {lead.id}: {biens_trouves} biens conformes trouvés")
+        
+    except Exception as e:
+        print(f"Erreur notification biens conformes: {e}")

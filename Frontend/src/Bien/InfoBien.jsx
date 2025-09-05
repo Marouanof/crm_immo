@@ -6,6 +6,20 @@ export default function InfoBien({ bien, onClose }) {
   
   if (!bien) return null;
 
+  // Fonction pour formater les critères
+  const renderCriteres = () => {
+    const criteres = [];
+    if (bien.ascenseur) criteres.push("Ascenseur");
+    if (bien.jardin) criteres.push("Jardin");
+    if (bien.garage) criteres.push("Garage");
+    if (bien.terrasse) criteres.push("Terrasse");
+    if (bien.balcon) criteres.push("Balcon");
+    if (bien.parking) criteres.push("Parking");
+    if (bien.piscine) criteres.push("Piscine");
+    if (bien.meuble) criteres.push("Meublé");
+    return criteres.length > 0 ? criteres.join(", ") : "Aucun critère spécifique";
+  };
+
   const renderContent = () => {
     switch(activeTab) {
       case "general":
@@ -25,8 +39,12 @@ export default function InfoBien({ bien, onClose }) {
                 <span className="info-value highlight">{bien.reference}</span>
               </div>
               <div className="info-item">
+                <span className="info-label">Etat du bien</span>
+                <span className="info-value highlight">{bien.etat_bien}</span>
+              </div>
+              <div className="info-item">
                 <span className="info-label">Transaction</span>
-                <span className={`info-value tag ${bien.type_transaction?.toLowerCase()}`}>
+                <span className={`info-value highlight ${bien.type_transaction?.toLowerCase()}`}>
                   {bien.type_transaction}
                 </span>
               </div>
@@ -37,6 +55,10 @@ export default function InfoBien({ bien, onClose }) {
               <div className="info-item">
                 <span className="info-label">Chambres</span>
                 <span className="info-value">{bien.nbr_chambre}</span>
+              </div>
+              <div className="info-item">
+                <span className="info-label">Critères</span>
+                <span className="info-value">{renderCriteres()}</span>
               </div>
             </div>
           </div>
@@ -62,7 +84,7 @@ export default function InfoBien({ bien, onClose }) {
               </div>
               
               <a 
-                href={`${bien.adresse}`} 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(bien.adresse)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="map-button"
@@ -144,6 +166,11 @@ export default function InfoBien({ bien, onClose }) {
           <div className="header-overlay">
             <h1 className="property-title">{bien.titre || "Détails du bien"}</h1>
             <p className="property-reference">Ref: {bien.reference}</p>
+            <div className="property-quick-info">
+              <span className="quick-info-item">{bien.type_bien} </span>
+              <span className="quick-info-item">{bien.etat_bien} </span>
+              <span className="quick-info-item">{bien.superficie} m²</span>
+            </div>
           </div>
           <button className="modal-close-creative" onClick={onClose}>
             <span>×</span>

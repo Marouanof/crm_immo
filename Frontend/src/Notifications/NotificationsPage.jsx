@@ -69,7 +69,7 @@ const NotificationsPage = () => {
   const deleteNotification = async (id) => {
     try {
       const token = localStorage.getItem('access_token');
-      const response = await fetch(`${apiUrl}/${id}/supprimer/`, {
+      const response = await fetch(`${apiUrl}/notifications/${id}/supprimer/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -89,7 +89,7 @@ export default function AfficherUtilisateurs() {
     }
     useEffect( ()=>{
       fetchUser();
-    }, [fetchUser]);
+    }, []);
 
   if (loading) return <div className="text-center mt-5">Chargement...</div>;
 

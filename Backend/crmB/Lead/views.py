@@ -143,7 +143,8 @@ class AjouterLeadAPIView(APIView):
                         quartier=choix_quartier['quartier'],
                         nbr_chambre=choix_quartier['nbr_chambre'],
                     )
-
+            from Notifications.services import verifier_et_notifier_biens_conformes
+            verifier_et_notifier_biens_conformes(lead)
             msg = "Lead ajouté avec succès"
 
 
@@ -156,8 +157,25 @@ class AjouterLeadAPIView(APIView):
 class LeadListAPIView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
-        leads = Lead.objects.all().order_by('-date_creation')
-        serializer = LeadSerializer(leads, many=True)
+        leads = Lead.objects.all()
+        leads_with_count = []
+        for lead in leads:
+            # Utilise ta fonction existante pour compter les propositions
+            from Notifications.services import bien_correspond_au_lead
+            from Bien.models import Bien
+            
+            biens_disponibles = Bien.objects.filter(statut_commercial='Disponible', is_validated=True)
+            count = 0
+            
+            for bien in biens_disponibles:
+                if bien_correspond_au_lead(bien, lead):
+                    count += 1
+            
+            leads_with_count.append((lead, count))
+        
+        # Trie par nombre de propositions (du plus grand au plus petit)
+        leads_with_count.sort(key=lambda x: x[1], reverse=True)
+        serializer = LeadSerializer([lead for lead, count in leads_with_count], many=True)
         return Response(serializer.data)
 
 class LeadDetailAPIView(APIView):

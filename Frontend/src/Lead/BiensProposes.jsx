@@ -158,7 +158,7 @@ const BiensProposes = ({leadSelected, onCancel, onSuccess}) => {
         if (surface == -1) {
             return 'Flexible';
         }
-        return `${surface} DH`;
+        return `${surface} m²`;
         };
     const fetchBiens = async () => {
         try {

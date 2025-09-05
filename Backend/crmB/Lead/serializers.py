@@ -102,3 +102,4 @@ class LeadSerializer(serializers.ModelSerializer):
     def get_dernier_rdv(self, obj):
         dernier = obj.rdv_set.order_by('-id').first()
         return RDVSerializer(dernier).data if dernier else None
+    
