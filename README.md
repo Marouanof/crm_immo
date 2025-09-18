@@ -62,6 +62,11 @@ API disponible: http://localhost:8000
 
 4) Frontend (React) - installation
 - Ouvrez un deuxième PowerShell dans `Frontend`:
+- Le frontend appelle l'API du backend. Ajoutez un fichier `.env` à la racine de `Frontend`:
+
+```
+VITE_API_BASE_URL=http://localhost:8000
+```
 ```
 npm install
 npm run dev
